@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<style>
+	body {
+		*margin: 0;
+		*padding: 0;
+	}
+	</style>
+</head>
+<body>
+<button data-event="test">open dialog</button>
+<script src="../lib/sea.js"></script>
+<script>
+seajs.config({
+  alias: {
+    "jquery": "jquery-1.10.2.js"
+  }
+});
+</script>
+
+<script>
+seajs.use(['jquery', '../src/dialog-plus'], function ($, dialog) {
+
+
+	$('button[data-event=test]').on('click', function () {
+		var d = dialog({
+			title: 'Message',
+			content: 'Blue clothes blown by the wind, warm face in the sunset, you are more beautiful than before, like a blooming flower < br>—— An Unforgettable Day by Xu Wei.',
+			okValue: 'OK',
+			ok: function () {
+				var that = this;
+				setTimeout(function () {
+					that.title('Loading..');
+				}, 2000);
+				return false;
+			},
+			cancelValue: 'Cancel',
+			cancel: function () {}
+		});
+
+		d.show();
+	});
+
+});
+</script>
+</body>
+</html>
