@@ -2,13 +2,26 @@
 
 use ArrayAccess;
 
-
+/**
+ *     
+ *
+ *
+ */
 abstract class AbstractParam implements ArrayAccess
 {
-    
+    /**
+     *          
+     * 
+     * @var array
+     */
     protected $attributes = [];
 
-    
+    /**
+     * Determine if the given attribute exists.
+     *
+     * @param  mixed  $offset
+     * @return bool
+     */
     public function offsetExists($offset)
     {
         return isset($this->$offset);
@@ -49,7 +62,7 @@ abstract class AbstractParam implements ArrayAccess
     }
     
     /**
-     * 返回该类的数组形式
+     *          
      * 
      * @return array
      */
@@ -86,9 +99,9 @@ abstract class AbstractParam implements ArrayAccess
     }
 
     /**
-     * 把值赋予到参数容器中
+     *           
      * 
-     * @param array $attributes 传入的值数值
+     * @param array $attributes       
      */
     public function setAttributes($attributes)
     {

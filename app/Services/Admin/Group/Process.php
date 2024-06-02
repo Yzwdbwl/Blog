@@ -8,35 +8,35 @@ use App\Services\Admin\Acl\Acl;
 use App\Services\Admin\BaseProcess;
 
 /**
- * 登录处理
+ *     
  *
  *  
  */
 class Process extends BaseProcess
 {
     /**
-     * 用户组模型
+     *      
      * 
      * @var object
      */
     private $groupModel;
 
     /**
-     * 用户组表单验证对象
+     *          
      * 
      * @var object
      */
     private $groupValidate;
 
     /**
-     * 权限处理对象
+     *       
      *
      * @var object
      */
     private $acl;
 
     /**
-     * 初始化
+     *    
      *
      * @access public
      */
@@ -58,7 +58,7 @@ class Process extends BaseProcess
     public function addGroup(\App\Services\Admin\Group\Param\GroupSave $data)
     {
         if( ! $this->groupValidate->add($data)) return $this->setErrorMsg($this->groupValidate->getErrorMessage());
-        //检查当前用户的权限是否能增加这个用户组
+        //                   
         if( ! $this->acl->checkGroupLevelPermission($data->level, Acl::GROUP_LEVEL_TYPE_LEVEL)) return $this->setErrorMsg(Lang::get('common.account_level_deny'));
         if($this->groupModel->addGroup($data->toArray()) !== false) return true;
         return $this->setErrorMsg(Lang::get('common.action_error'));
@@ -89,7 +89,7 @@ class Process extends BaseProcess
     }
 
     /**
-     * 编辑用户组
+     *      
      *
      * @param string $data
      * @access public
@@ -101,7 +101,7 @@ class Process extends BaseProcess
         $id = intval(url_param_decode($data->id)); unset($data->id);
         if( ! $id) return $this->setErrorMsg(Lang::get('common.illegal_operation'));
         if( ! $this->groupValidate->edit($data)) return $this->setErrorMsg($this->groupValidate->getErrorMessage());
-        //检查当前用户的权限是否能增加这个用户
+        //                  
         if( ! $this->acl->checkGroupLevelPermission($data->level, Acl::GROUP_LEVEL_TYPE_LEVEL)) return $this->setErrorMsg(Lang::get('common.account_level_deny'));
         if($this->groupModel->editGroup($data->toArray(), $id) !== false) return true;
         return $this->setErrorMsg(Lang::get('common.action_error'));

@@ -5,32 +5,53 @@ namespace App\Widget\Admin;
 use App\Services\Admin\SC;
 use App\Services\Admin\Tree;
 
-
+/**
+ *      
+ *
+ *  
+ */
 class Menu
 {
-   
+    /**
+     *     
+     *
+     * @var array
+     */
     protected $list;
 
-    
+    /**
+     *     
+     *
+     * @var array
+     */
     protected $menuTree;
 
-    
+    /**
+     *        
+     */
     CONST DISABLE_NONE = 0;
 
+    /**
+     *        
+     */
     public function leftMenu()
     {
         $this->generalData();
         return view('admin.widget.leftmenu', ['menu' => $this->menuTree]);
     }
 
-   
+    /**
+     *        
+     */
     public function contentMenu()
     {
         $contentMenu = $this->getContentMenu();
         return view('admin.widget.contentmenu', compact('contentMenu'));
     }
 
-   
+    /**
+     *   ztree       ，        
+     */
     public function ztreeNode()
     {
         $this->list = SC::getUserPermissionSession();
@@ -46,6 +67,11 @@ class Menu
         return json_encode($result);
     }
 
+    /**
+     *          
+     *
+     * @return boolean
+     */
     private function isSecondFatherNode($currentNode)
     {
         if($currentNode['level'] != 2) return false;
@@ -55,7 +81,9 @@ class Menu
         return false;
     }
 
-  
+    /**
+     *                    
+     */
     protected function generalData()
     {
         $this->list = SC::getUserPermissionSession();
@@ -66,7 +94,9 @@ class Menu
         return $this;
     }
 
-   
+    /**
+     *          
+     */
     protected function getContentMenu()
     {
         $this->list = SC::getUserPermissionSession();

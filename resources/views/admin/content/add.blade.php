@@ -84,7 +84,7 @@
           // ctrl + s
           if( e.ctrlKey  == true && e.keyCode == 83 ){
             $('#save-buttom').trigger('click');
-            return false; // 截取返回false就不会保存网页了
+            return false; //     false        
           }
         });
     </script>

@@ -38,7 +38,6 @@
     <script src="<?php echo loadStatic('/lib/blockui.js'); ?>" type="text/javascript"></script>
     <script src="<?php echo loadStatic('/lib/common.js'); ?>" type="text/javascript"></script>
 
-    <!-- 弹出窗口 -->
     <link rel="stylesheet" href="<?php echo loadStatic('/lib/artdialog/css/ui-dialog.css'); ?>">
     <script src="<?php echo loadStatic('/lib/artdialog/dist/dialog-plus-min.js'); ?>"></script>
 

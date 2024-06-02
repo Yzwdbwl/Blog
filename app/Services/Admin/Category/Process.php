@@ -6,21 +6,45 @@ use App\Models\Admin\ClassifyRelation as ClassifyRelationModel;
 use App\Services\Admin\Category\Validate\Category as CategoryValidate;
 use App\Services\Admin\BaseProcess;
 
-
+/**
+ *       
+ *
+ *  
+ */
 class Process extends BaseProcess
 {
-   
+    /**
+     *     
+     * 
+     * @var object
+     */
     private $categoryModel;
 
+    /**
+     *         
+     * 
+     * @var object
+     */
     private $categoryValidate;
 
-  
+    /**
+     *    
+     *
+     * @access public
+     */
     public function __construct()
     {
         if( ! $this->categoryModel) $this->categoryModel = new CategoryModel();
         if( ! $this->categoryValidate) $this->categoryValidate = new CategoryValidate();
     }
 
+    /**
+     *       
+     *
+     * @param array $data
+     * @access public
+     * @return boolean true|false
+     */
     public function addCategory(\App\Services\Admin\Category\Param\CategorySave $data)
     {
         if( ! $this->categoryValidate->add($data)) return $this->setErrorMsg($this->categoryValidate->getErrorMessage());
@@ -31,7 +55,13 @@ class Process extends BaseProcess
         return $this->setErrorMsg(Lang::get('common.action_error'));
     }
 
-  
+    /**
+     * Delete  
+     * 
+     * @param array $ids
+     * @access public
+     * @return boolean true|false
+     */
     public function detele($ids)
     {
         if( ! is_array($ids)) return false;
@@ -40,7 +70,13 @@ class Process extends BaseProcess
         return $this->setErrorMsg(Lang::get('common.action_error'));
     }
 
-   
+    /**
+     *     
+     *
+     * @param array $data
+     * @access public
+     * @return boolean true|false
+     */
     public function editCategory(\App\Services\Admin\Category\Param\CategorySave $data)
     {
         if( ! isset($data['id'])) return $this->setErrorMsg(Lang::get('common.action_error'));
@@ -50,7 +86,9 @@ class Process extends BaseProcess
         return $this->setErrorMsg(Lang::get('common.action_error'));
     }
 
-    
+    /**
+     *         
+     */
     public function unDeleteCategory()
     {
         $category = $this->categoryModel->unDeleteCategory();

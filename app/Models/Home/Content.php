@@ -4,20 +4,42 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-
+/**
+ *      
+ *
+ *
+ */
 class Content extends Model
 {
-    
+    /**
+     *    Delete   
+     */
     CONST IS_DELETE_NO = 1;
 
+    /**
+     *        
+     */
     CONST STATUS_YES = 1;
 
-    
+    /**
+     *       
+     *
+     * @var string
+     */
     protected $table = 'artice';
 
-   
+    /**
+     *    
+     *
+     * @var string
+     */
     private $prefix;
 
+    /**
+     *         
+     *
+     * @return array
+     */
     public function activeArticleInfo($object)
     {
 
@@ -41,7 +63,12 @@ class Content extends Model
         ]);
     }
 
-  
+    /**
+     *               
+     *
+     * @param int $articleId    ID
+     * @return array
+     */
     public function getContentDetailByArticleId($articleId)
     {
         $articleId = (int) $articleId;

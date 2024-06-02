@@ -5,10 +5,18 @@ namespace App\Widget\Admin;
 use App\Widget\Admin\AbstractBase;
 use App\Models\Admin\Position as PositionModel;
 
-
+/**
+ *        
+ *
+ *  
+ */
 class Content extends AbstractBase
 {
-   
+    /**
+     *         
+     *
+     * @access public
+     */
     public function edit($data)
     {
         $this->setCurrentAction('content', 'edit', 'blog')->checkPermission();
@@ -19,7 +27,11 @@ class Content extends AbstractBase
         return $html;
     }
 
-    
+    /**
+     *         
+     *
+     * @access public
+     */
     public function delete($data)
     {
         $this->setCurrentAction('content', 'delete', 'blog')->checkPermission();
@@ -30,7 +42,11 @@ class Content extends AbstractBase
         return $html;
     }
 
-    
+    /**
+     *        
+     *
+     * @access public
+     */
     public function navBtn()
     {
         $this->setCurrentAction('content', 'add', 'blog')->checkPermission();
@@ -41,7 +57,11 @@ class Content extends AbstractBase
         return $html;
     }
 
-   
+    /**
+     *   Delete
+     *
+     * @access public
+     */
     public function deleteSelect()
     {
         $this->setCurrentAction('content', 'delete', 'blog')->checkPermission();
@@ -51,7 +71,11 @@ class Content extends AbstractBase
         return $html;
     }
 
-    
+    /**
+     *        
+     *
+     * @access public
+     */
     public function position()
     {
         $this->setCurrentAction('content', 'position', 'blog')->checkPermission();

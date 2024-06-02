@@ -10,14 +10,14 @@ use App\Services\Admin\Acl\Acl;
 use App\Http\Controllers\Admin\Controller;
 
 /**
- * 用户相关
+ *     
  *
  * 
  */
 class UserController extends Controller
 {
     /**
-     * 用户管理列表
+     *       
      *
      * @access public
      */
@@ -37,7 +37,7 @@ class UserController extends Controller
     }
 
     /**
-     * 增加一个用户
+     *       
      *
      * @access public
      */
@@ -59,7 +59,7 @@ class UserController extends Controller
     }
 
     /**
-     * 保存数据到数据库
+     *         
      *
      * @access private
      */
@@ -79,7 +79,7 @@ class UserController extends Controller
     }
 
     /**
-     * Delete用户
+     * Delete  
      *
      * @access public
      */
@@ -104,7 +104,7 @@ class UserController extends Controller
     }
 
     /**
-     * 编辑用户的资料
+     *        
      *
      * @access public
      */
@@ -122,7 +122,7 @@ class UserController extends Controller
         $userInfo = $userModel->getOneUserById($userId);
         if(empty($userInfo)) return Js::error(Lang::get('user.user_not_found'), true);
         if( ! (new Acl())->checkGroupLevelPermission($userId, Acl::GROUP_LEVEL_TYPE_USER)) return Js::error(Lang::get('common.account_level_deny'), true);
-        //根据当前用户的权限获取用户组列表
+        //                
         $groupInfo = $groupModel->getOneGroupById(SC::getLoginSession()->group_id);
         $isSuperSystemManager = (new Acl())->isSuperSystemManager();
         if($isSuperSystemManager) $groupInfo['level'] = 0;
@@ -132,7 +132,7 @@ class UserController extends Controller
     }
 
     /**
-     * 更新用户信息到数据库
+     *           
      *
      * @access private
      */
@@ -155,7 +155,7 @@ class UserController extends Controller
     }
 
     /**
-     * 修改自己的密码
+     *        
      */
     public function mpassword()
     {

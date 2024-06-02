@@ -4,20 +4,20 @@ use Validator, Lang;
 use App\Services\Admin\BaseValidate;
 
 /**
- * 功能表单验证
+ *       
  *
  * 
  */
 class Acl extends BaseValidate
 {
     /**
-     * 增加功能的时候的表单验证
+     *             
      *
      * @access public
      */
     public function add(\App\Services\Admin\Acl\Param\AclSave $data)
     {
-        //创建验证规则
+        //      
         $rules = array(
             'name'    => 'required',
             'module'  => 'required',
@@ -26,7 +26,7 @@ class Acl extends BaseValidate
             'pid'     => 'required|numeric',
         );
         
-        //自定义验证消息
+        //       
         $messages = array(
             'name.required'   => Lang::get('acl.acl_name_empty'),
             'module.required'  => Lang::get('acl.acl_module_empty'),
@@ -36,7 +36,7 @@ class Acl extends BaseValidate
             'action.required' => Lang::get('acl.acl_action_empty')
         );
         
-        //开始验证
+        //    
         $validator = Validator::make($data->toArray(), $rules, $messages);
         if($validator->fails())
         {
@@ -47,7 +47,7 @@ class Acl extends BaseValidate
     }
     
     /**
-     * 编辑用户权限的时候的表单验证
+     *               
      *
      * @access public
      */

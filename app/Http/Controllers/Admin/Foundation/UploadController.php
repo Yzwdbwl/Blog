@@ -7,14 +7,14 @@ use App\Services\Admin\Upload\Process as UploadManager;
 use App\Http\Controllers\Admin\Controller;
 
 /**
- * 弹出窗口上传
+ *       
  *
  * 
  */
 class UploadController extends Controller
 {
     /**
-     * 上传弹出窗口
+     *       
      */
     public function index()
     {
@@ -26,16 +26,16 @@ class UploadController extends Controller
     }
 
     /**
-     * 处理上传
+     *     
      */
     public function process()
     {
         $parpams = Request::only('authkey', 'args');
         $config = @ unserialize(base64url_decode($parpams['args']));
-        //检测请求是否合法
+        //        
         $uploadObject = new UploadManager();
         if( ! $uploadObject->setParam($config)->checkUploadToken($parpams['authkey'])) return abort(500);
-        //开始处理上传
+        //      
         $file = Request::file('file');
         $returnFileUrl = $uploadObject->setFile($file)->upload();
         if( ! $returnFileUrl) return abort(500);

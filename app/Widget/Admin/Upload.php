@@ -5,23 +5,43 @@ namespace App\Widget\Admin;
 use Config;
 use App\Services\Admin\Upload\Process as UploadManager;
 
-
+/**
+ *      
+ *
+ *  
+ */
 class Upload
 {
-   
+    /**
+     *      
+     * 
+     * @var array
+     */
     private $config = [
-        'id' => '', 
-        'callback' => '', 
-        'alowexts' => '', 
-        'nums' => '', 
+        'id' => '', //  ,  id
+        'callback' => '', //  ,    
+        'alowexts' => '', //      
+        'nums' => '', //           
+        //     
+        //<code>
+        //  thumbSettin   ：
+        //  $thumbSetting = array(
+        //      ['width' => 111, 'height' => 222],//           
+        //      ['width' => 111, 'height' => 222]
+        //  );
+        //</code>
         'thumbSetting' => '',
-        'waterSetting' => '', 
-        'waterImage' => '', 
-        'uploadPath' => '', 
+        'waterSetting' => '', //true|false   
+        'waterImage' => '', //        ，           ，       。
+        'uploadPath' => '', //     
         'filesize' => '',
     ];
 
-    
+    /**
+     *      
+     *
+     * @param array $config      
+     */
     public function setConfig(array $config)
     {
         foreach($config as $key => $value)
@@ -31,7 +51,9 @@ class Upload
         return $this;
     }
 
-   
+    /**
+     *         ，      
+     */
     public function uploadButton()
     {
         $config = $this->config;
@@ -41,6 +63,7 @@ class Upload
         $config['uploadPath'] = base64url_encode($config['uploadPath']);
 
         $config['uploadUrl'] = R('common', 'foundation.upload.index');
+        //    ，       。
         $authkey = $uploadObject->setParam($config)->uploadKey();
         return view('admin.widget.uploadbutton',
             compact('config', 'authkey')

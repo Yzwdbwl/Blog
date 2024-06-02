@@ -11,7 +11,7 @@ use App\Libraries\Js;
 use App\Http\Controllers\Admin\Controller;
 
 /**
- * Login
+ *     
  *
  * 
  */
@@ -35,7 +35,7 @@ class ContentController extends Controller
     }
 
     /**
-     * Add article
+     *     
      *
      * @access public
      */
@@ -48,7 +48,7 @@ class ContentController extends Controller
     }
 
     /**
-     * 
+     *         
      *
      * @access private
      */
@@ -65,7 +65,7 @@ class ContentController extends Controller
     }
 
     /**
-     * Delete article
+     * Delete  
      *
      * @access public
      */
@@ -78,7 +78,11 @@ class ContentController extends Controller
         return responseJson($manager->getErrorMessage());
     }
 
-    
+    /**
+     *     
+     *
+     * @access public
+     */
     public function edit()
     {
         if(Request::method() == 'POST') return $this->updateDatasToDatabase();
@@ -94,7 +98,12 @@ class ContentController extends Controller
         return view('admin.content.add', compact('info', 'formUrl', 'id'));
     }
 
-    
+    /**
+     *            
+     *
+     * @param  array $articleInfo        
+     * @return array                        
+     */
     private function joinArticleClassify($articleInfo)
     {
         $classifyInfo = (new ContentModel())->getArticleClassify($articleInfo['id']);
@@ -107,7 +116,12 @@ class ContentController extends Controller
         return $articleInfo;
     }
 
-   
+    /**
+     *            
+     *
+     * @param  array $articleInfo        
+     * @return array                        
+     */
     private function joinArticleTags($articleInfo)
     {
         $tagsInfo = (new ContentModel())->getArticleTag($articleInfo['id']);
@@ -120,7 +134,11 @@ class ContentController extends Controller
         return $articleInfo;
     }
 
-  
+    /**
+     *         
+     *
+     * @access private
+     */
     private function updateDatasToDatabase()
     {
 
@@ -142,7 +160,9 @@ class ContentController extends Controller
         return Js::error($manager->getErrorMessage());
     }
 
-   
+    /**
+     *          
+     */
     public function position()
     {
         $ids = array_map('intval', (array) Request::input('ids'));

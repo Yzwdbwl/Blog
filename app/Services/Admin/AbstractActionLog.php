@@ -2,7 +2,11 @@
 
 use App\Services\Admin\ActionLog\Mark;
 
-
+/**
+ *     
+ *
+ *
+ */
 abstract class AbstractActionLog
 {
     abstract public function handler();

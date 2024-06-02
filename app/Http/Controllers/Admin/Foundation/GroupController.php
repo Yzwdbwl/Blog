@@ -10,14 +10,14 @@ use App\Libraries\Js;
 use App\Services\Admin\Acl\Acl;
 
 /**
- * 用户组管理
+ *      
  *
  * 
  */
 class GroupController extends Controller
 {
     /**
-     * 显示用户组列表首页
+     *          
      *
      * @access public
      */
@@ -31,7 +31,7 @@ class GroupController extends Controller
     }
 
     /**
-     * 增加用户组
+     *      
      *
      * @access public
      */
@@ -43,7 +43,7 @@ class GroupController extends Controller
     }
 
     /**
-     * 增加用户组入库处理
+     *          
      *
      * @access private
      */
@@ -61,7 +61,7 @@ class GroupController extends Controller
     }
 
     /**
-     * Delete用户组
+     * Delete   
      *
      * @access public
      */
@@ -85,7 +85,7 @@ class GroupController extends Controller
     }
 
     /**
-     * 编辑用户组
+     *      
      *
      * @access public
      */
@@ -104,7 +104,7 @@ class GroupController extends Controller
     }
 
     /**
-     * 编辑用户组入库处理
+     *          
      *
      * @access private
      */

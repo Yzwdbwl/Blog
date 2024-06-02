@@ -9,35 +9,35 @@ use App\Services\Admin\Acl\Acl;
 use App\Services\Admin\BaseProcess;
 
 /**
- * 用户处理
+ *     
  *
  *  
  */
 class Process extends BaseProcess
 {
     /**
-     * 用户模型
+     *     
      *
      * @var object
      */
     private $userModel;
 
     /**
-     * 用户表单验证对象
+     *         
      *
      * @var object
      */
     private $userValidate;
 
     /**
-     * 权限处理对象
+     *       
      *
      * @var object
      */
     private $acl;
 
     /**
-     * 初始化
+     *    
      *
      * @access public
      */
@@ -58,18 +58,18 @@ class Process extends BaseProcess
     public function addUser(\App\Services\Admin\User\Param\UserSave $data)
     {
         if( ! $this->userValidate->add($data)) return $this->setErrorMsg($this->userValidate->getErrorMessage());
-        //检查当前用户的权限是否能增加这个用户
+        //                  
         if( ! $this->acl->checkGroupLevelPermission($data->group_id, Acl::GROUP_LEVEL_TYPE_GROUP)) return $this->setErrorMsg(Lang::get('common.account_level_deny'));
-        //检测当前用户名是否已经存在
+        //             
         if($this->userModel->getOneUserByName($data->name)) return $this->setErrorMsg(Lang::get('user.account_exists'));
         $data->setPassword(Hash::make($data->password));
-        //开始保存到数据库
+        //        
         if($this->userModel->addUser($data->toArray()) !== false) return true;
         return $this->setErrorMsg(Lang::get('common.action_error'));
     }
 
     /**
-     * Delete用户
+     * Delete  
      *
      * @param string $data
      * @access public
@@ -93,7 +93,7 @@ class Process extends BaseProcess
     }
 
     /**
-     * 编辑用户
+     *     
      *
      * @param string $data
      * @access public
@@ -107,14 +107,14 @@ class Process extends BaseProcess
         if( ! $this->userValidate->edit($data)) return $this->setErrorMsg($this->userValidate->getErrorMessage());
         if( ! empty($data->password)) $data->setPassword(Hash::make($data->password));
         else unset($data->password);
-        //检查当前用户的权限是否能增加这个用户
+        //                  
         if( ! $this->acl->checkGroupLevelPermission($id, Acl::GROUP_LEVEL_TYPE_USER)) return $this->setErrorMsg(Lang::get('common.account_level_deny'));
         if($this->userModel->editUser($data->toArray(), $id) !== false) return true;
         return $this->setErrorMsg(Lang::get('common.action_error'));
     }
 
     /**
-     * 修改自己的密码
+     *        
      *
      * @return true|false
      */
@@ -130,7 +130,7 @@ class Process extends BaseProcess
     }
 
     /**
-     * 工作流关联用户的用户资料
+     *             
      *
      * @return array
      */

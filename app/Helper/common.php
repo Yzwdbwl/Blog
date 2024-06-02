@@ -1,11 +1,20 @@
 <?php
 
-
+/**
+ * 
+ *
+ * @param string $route 
+ * @param string $urlString 
+ * @param string $params 
+ * @return string
+ */
 
 if( ! function_exists('R'))
 {
     function R($route, $urlString, $params = [])
-    {   if( ! is_string($route) or ! is_string($urlString)) return false;
+    {
+
+        if( ! is_string($route) or ! is_string($urlString)) return false;
         $urlArr = explode('.', $urlString);
         if( ! isset($urlArr[2])) return false;
         $param = ['module' => $urlArr[0], 'class' => $urlArr[1], 'action' => $urlArr[2]];
@@ -14,6 +23,8 @@ if( ! function_exists('R'))
         return route($route, $param);
     }
 }
+
+
 if( ! function_exists('widget'))
 {
     function widget($widgetName)
@@ -29,6 +40,8 @@ if( ! function_exists('widget'))
         return app()->make($widgetName);
     }
 }
+
+
 if( ! function_exists('responseJson'))
 {
     function responseJson($msg, $status = false)

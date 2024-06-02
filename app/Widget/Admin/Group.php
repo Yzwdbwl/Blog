@@ -5,10 +5,18 @@ namespace App\Widget\Admin;
 use App\Widget\Admin\AbstractBase;
 use App\Services\Admin\Acl\Acl;
 
-
+/**
+ *         
+ *
+ *  
+ */
 class Group extends AbstractBase
 {
-   
+    /**
+     *          
+     *
+     * @access public
+     */
     public function edit($data)
     {
         $this->setCurrentAction('group', 'edit', 'foundation')->setData($data)->checkPermission(Acl::GROUP_LEVEL_TYPE_GROUP);
@@ -19,7 +27,11 @@ class Group extends AbstractBase
         return $html;
     }
 
-    
+    /**
+     *      Delete  
+     *
+     * @access public
+     */
     public function delete($data)
     {
         $this->setCurrentAction('group', 'delete', 'foundation')->setData($data)->checkPermission(Acl::GROUP_LEVEL_TYPE_GROUP);
@@ -30,7 +42,11 @@ class Group extends AbstractBase
         return $html;
     }
 
-    
+    /**
+     *      Delete  
+     *
+     * @access public
+     */
     public function acl($data)
     {
         $this->setCurrentAction('acl', 'group', 'foundation')->setData($data)->checkPermission(Acl::GROUP_LEVEL_TYPE_GROUP);
@@ -41,7 +57,11 @@ class Group extends AbstractBase
         return $html;
     }
 
-  
+    /**
+     *        
+     *
+     * @access public
+     */
     public function navBtn()
     {
         $this->setCurrentAction('group', 'add', 'foundation')->checkPermission(Acl::GROUP_LEVEL_TYPE_GROUP);

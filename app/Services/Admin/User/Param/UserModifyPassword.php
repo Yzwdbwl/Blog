@@ -3,7 +3,7 @@
 use App\Services\Admin\AbstractParam;
 
 /**
- * 用户操作有关的参数容器，固定参数，方便分离处理。
+ *            ，    ，      。
  *
  *  
  */
@@ -17,7 +17,7 @@ class UserModifyPassword extends AbstractParam
 
     /**
      * setOldPassword
-     * @param string $oldPassword 旧的密码
+     * @param string $oldPassword     
      */
     public function setOldPassword($oldPassword)
     {
@@ -27,7 +27,7 @@ class UserModifyPassword extends AbstractParam
 
     /**
      * setNewPassword
-     * @param string $oldPassword 新的密码
+     * @param string $oldPassword     
      */
     public function setNewPassword($newPassword)
     {
@@ -37,7 +37,7 @@ class UserModifyPassword extends AbstractParam
 
     /**
      * setNewPassword
-     * @param string $oldPassword 新的密码
+     * @param string $oldPassword     
      */
     public function setNewPasswordRepeat($newPasswordRepeat)
     {

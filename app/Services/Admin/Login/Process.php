@@ -4,21 +4,21 @@ use Config;
 use App\Services\Admin\Login\AbstractProcess;
 
 /**
- * 登录处理
+ *     
  *
  *  
  */
 class Process {
 
     /**
-     * 登录处理对象
+     *       
      * 
      * @var object
      */
     private $process;
 
     /**
-     * 初始化
+     *    
      *
      * @access public
      */
@@ -33,7 +33,7 @@ class Process {
     }
 
     /**
-     * 返回登录处理的对象
+     *          
      *
      * @return object
      */

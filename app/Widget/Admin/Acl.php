@@ -5,10 +5,18 @@ namespace App\Widget\Admin;
 use App\Widget\Admin\AbstractBase;
 use App\Services\Admin\Acl\Acl as AclManager;
 
- 
+/**
+ *        
+ *
+ *  
+ */
 class Acl extends AbstractBase
 {
-    
+    /**
+     *         
+     *
+     * @access public
+     */
     public function edit($data)
     {
         $this->setCurrentAction('acl', 'edit', 'foundation')->checkPermission();
@@ -19,6 +27,11 @@ class Acl extends AbstractBase
         return $html;
     }
 
+    /**
+     *     Delete  
+     *
+     * @access public
+     */
     public function delete($data)
     {
         $this->setCurrentAction('acl', 'delete', 'foundation')->checkPermission();
@@ -29,7 +42,11 @@ class Acl extends AbstractBase
         return $html;
     }
 
-   
+    /**
+     *        
+     *
+     * @access public
+     */
     public function navBtn()
     {
         $this->setCurrentAction('acl', 'add', 'foundation')->checkPermission();
@@ -40,7 +57,11 @@ class Acl extends AbstractBase
         return $html;
     }
 
-   
+    /**
+     *      
+     *
+     * @access public
+     */
     public function sort()
     {
         $this->setCurrentAction('acl', 'sort', 'foundation')->checkPermission();
@@ -50,10 +71,20 @@ class Acl extends AbstractBase
         return $html;
     }
 
-    
+    /**
+     *       key
+     *
+     * @var string
+     */
     private $son;
 
-    
+    /**
+     *   select  option    ，         
+     *
+     * @param  array $datas    
+     * @param  mixed $prefix       ，   false
+     * @return html       option  
+     */
     public function acllist(array $datas, $pid, $prefix = false)
     {
         $html = '';

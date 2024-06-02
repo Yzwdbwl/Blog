@@ -15,14 +15,14 @@ use App\Services\Admin\Tree;
 use App\Services\Admin\SC;
 
 /**
- * 权限菜单相关
+ *       
  *
  *
  */
 class AclController extends Controller
 {
     /**
-     * 显示权限列表首页
+     *         
      *
      * @access public
      */
@@ -38,7 +38,7 @@ class AclController extends Controller
     }
 
     /**
-     * 增加权限功能
+     *       
      *
      * @access public
      */
@@ -52,7 +52,7 @@ class AclController extends Controller
     }
 
     /**
-     * 增加功能权限入库处理
+     *           
      *
      * @access private
      */
@@ -68,10 +68,10 @@ class AclController extends Controller
     }
 
     /**
-     * Delete权限功能
+     * Delete    
      *
      * @access public
-     * @todo 只能Delete自己所拥有的权限？有没有必要做？
+     * @todo   Delete        ？      ？
      */
     public function delete()
     {
@@ -88,7 +88,7 @@ class AclController extends Controller
     }
 
     /**
-     * 编辑权限功能
+     *       
      *
      * @access public
      */
@@ -109,7 +109,7 @@ class AclController extends Controller
     }
 
     /**
-     * 编辑功能权限入库处理
+     *           
      *
      * @access private
      */
@@ -130,7 +130,7 @@ class AclController extends Controller
     }
 
     /**
-     * 排序权限功能
+     *       
      *
      * @access public
      */
@@ -147,7 +147,7 @@ class AclController extends Controller
     }
 
     /**
-     * 对用户进行权限设置
+     *          
      *
      * @access public
      */
@@ -160,10 +160,10 @@ class AclController extends Controller
         if(empty($info)) return Js::error(Lang::get('common.illegal_operation'), true);
         if( ! (new Acl())->checkGroupLevelPermission($id, Acl::GROUP_LEVEL_TYPE_USER)) return Js::error(Lang::get('common.account_level_deny'), true);
 
-        //取回用户所拥有的权限列表
+        //            
         $list = SC::getUserPermissionSession();
 
-        //当前用户的权限
+        //       
         $userAcl = (new AccessModel())->getUserAccessPermission(intval($id));
         $hasPermissions = array();
         foreach($userAcl as $key => $value)
@@ -171,7 +171,7 @@ class AclController extends Controller
             $hasPermissions[] = $value['permission_id'];
         }
 
-        //为ztree做数据准备
+        // ztree     
         $zTree = []; $all = [];
         foreach($list as $key => $value)
         {
@@ -188,7 +188,7 @@ class AclController extends Controller
     }
 
     /**
-     * 用户权限入库
+     *       
      *
      * @return boolean true|false
      */
@@ -212,7 +212,7 @@ class AclController extends Controller
     }
 
     /**
-     * 对用户组进行权限设置
+     *           
      *
      * @access public
      */
@@ -225,10 +225,10 @@ class AclController extends Controller
         if(empty($info)) return Js::error(Lang::get('common.illegal_operation'), true);
         if( ! (new Acl())->checkGroupLevelPermission($id, Acl::GROUP_LEVEL_TYPE_GROUP)) return Js::error(Lang::get('common.account_level_deny'), true);
 
-        //取回用户组所拥有的权限列表
+        //             
         $list = (array) SC::getUserPermissionSession();
 
-        //当前所要编辑的用户组的权限，用于标识是否已经勾选
+        //             ，          
         $groupAcl = (new AccessModel())->getGroupAccessPermission(intval($id));
         $hasPermissions = array();
         foreach($groupAcl as $key => $value)
@@ -236,7 +236,7 @@ class AclController extends Controller
             $hasPermissions[] = $value['permission_id'];
         }
 
-        //为ztree做数据准备
+        // ztree     
         $zTree = []; $all = [];
         foreach($list as $key => $value)
         {
@@ -253,7 +253,7 @@ class AclController extends Controller
     }
 
     /**
-     * 用户组权限入库
+     *        
      *
      * @return boolean true|false
      */

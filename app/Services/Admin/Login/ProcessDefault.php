@@ -8,28 +8,28 @@ use Validator, Lang;
 use Request;
 
 /**
- * 登录处理
+ *     
  *
  *  
  */
 class ProcessDefault extends AbstractProcess {
 
     /**
-     * 用户模型
+     *     
      * 
      * @var object
      */
     private $userModel;
 
     /**
-     * 权限模型
+     *     
      * 
      * @var object
      */
     private $permissionModel;
 
     /**
-     * 初始化
+     *    
      *
      * @access public
      */
@@ -40,12 +40,12 @@ class ProcessDefault extends AbstractProcess {
     }
 
     /**
-     * 登录验证
+     *     
      *
-     * @param string $username 用户名
-     * @param string $password 密码
+     * @param string $username    
+     * @param string $password   
      * @access public
-     * @return boolean false|用户的信息
+     * @return boolean false|     
      */
     public function check($username, $password)
     {
@@ -66,10 +66,10 @@ class ProcessDefault extends AbstractProcess {
     }
 
     /**
-     * 检测post过来的数据
+     *   post     
      * 
-     * @param string $username 用户名
-     * @param string $password 密码
+     * @param string $username    
+     * @param string $password   
      * @access public
      * @return false|string
      */
@@ -93,7 +93,7 @@ class ProcessDefault extends AbstractProcess {
     }
 
     /**
-     * 手动的验证csrftoken
+     *      csrftoken
      */
     private function checkCsrfToken()
     {
@@ -102,9 +102,9 @@ class ProcessDefault extends AbstractProcess {
     }
 
     /**
-     * 设置并返回加密密钥
+     *          
      *
-     * @return string 密钥
+     * @return string   
      */
     public function setPublicKey()
     {
@@ -112,9 +112,9 @@ class ProcessDefault extends AbstractProcess {
     }
 
     /**
-     * 取得刚才设置的加密密钥
+     *            
      * 
-     * @return string 密钥
+     * @return string   
      */
     public function getPublicKey()
     {
@@ -122,7 +122,7 @@ class ProcessDefault extends AbstractProcess {
     }
 
     /**
-     * Delete密钥
+     * Delete  
      * 
      * @return void
      */
@@ -132,7 +132,7 @@ class ProcessDefault extends AbstractProcess {
     }
 
     /**
-     * 判断是否已经登录
+     *         
      *
      * @return boolean true|false
      */
@@ -142,7 +142,7 @@ class ProcessDefault extends AbstractProcess {
     }
 
     /**
-     * 登录退出
+     *     
      *
      * @return void
      */

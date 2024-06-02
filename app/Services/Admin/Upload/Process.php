@@ -3,56 +3,56 @@
 use App\Services\Admin\BaseProcess;
 
 /**
- * Upload
+ *     
  *
  *  
  */
 class Process extends BaseProcess
 {
-    /**Encryption key for uploading
-     * 
+    /**
+     *          
      * 
      * @var string
      */
     private $uploadToken = 'jiang';
 
     /**
-     * The name of the file upload form
+     *          
      * 
      * @var string
      */
     private $fileFormName = 'file';
 
     /**
-     * 上传的文件对象
+     *        
      * 
      * @var object
      */
     private $file;
 
     /**
-     * 上传需要的参数
+     *        
      * 
      * @var array
      */
     private $params;
 
     /**
-     * 所要保存的文件名
+     *         
      * 
      * @var string
      */
     private $saveFileName;
 
     /**
-     * 配置文件中所定的文件保存的路径
+     *                
      * 
      * @var string
      */
     private $configSavePath;
 
     /**
-     * 设置上传需要的参数
+     *          
      */
     public function setParam($params)
     {
@@ -61,7 +61,7 @@ class Process extends BaseProcess
     }
 
     /**
-     * 文件上传的对象
+     *        
      */
     public function setFile($file)
     {
@@ -70,7 +70,7 @@ class Process extends BaseProcess
     }
 
     /**
-     * 生成上传附件验证，防止表单修改
+     *         ，      
      */
     public function uploadKey()
     {
@@ -80,7 +80,7 @@ class Process extends BaseProcess
     }
 
     /**
-     * 检测token是否匹配
+     *   token    
      * 
      * @return boolean
      */
@@ -91,25 +91,25 @@ class Process extends BaseProcess
     }
 
     /**
-     * 开始处理上传
+     *       
      *
      * @return false|string
      */
     public function upload()
     {
-        //是否上传出错
+        //      
         if ( ! $this->file->isValid() or $this->file->getError() != UPLOAD_ERR_OK) return false;
-        //保存的路径
+        //     
         $savePath = $this->setSavePath();
-        //保存的文件名
+        //      
         $saveFileName = $this->getSaveFileName().'.'.$this->file->getClientOriginalExtension();
-        //保存
+        //  
         $this->file->move($savePath, $saveFileName);
-        //文件是否存在
+        //      
         $realFile = $savePath.$saveFileName;
         if( ! file_exists($realFile)) return false;
 
-        //是否加上水印
+        //      
         if(isset($this->params['waterSetting']) and $this->params['waterSetting'] === true)
         {
             $waterImage = $this->params['waterImage'];
@@ -120,11 +120,11 @@ class Process extends BaseProcess
             $this->waterImage($realFile, $waterImage);
         }
 
-        //返回文件
+        //    
         $realFileUrl[] = str_replace('/', '', str_replace($this->getConfigSavePath(), '', $realFile));
         $thumbRealFileUrl = [];
 
-        //是否要裁剪
+        //     
         if(isset($this->params['thumbSetting']) and ! empty($this->params['thumbSetting']))
         {
             $thumbRealFileUrl = $this->cutImage($realFile, $savePath);
@@ -136,10 +136,10 @@ class Process extends BaseProcess
     }
 
     /**
-     * 加上水印
+     *     
      * 
-     * @param  string $realFile 所要处理的图片的位置
-     * @param string $waterImage 所要加上的水印图
+     * @param  string $realFile           
+     * @param string $waterImage         
      * @return void
      */
     private function waterImage($realFile, $waterImage)
@@ -155,11 +155,11 @@ class Process extends BaseProcess
     }
 
     /**
-     * 开始处理裁剪
+     *       
      *
-     * @param  string $realFile 所要处理的图片的位置
-     * @param  string $savePath 所要保存的位置
-     * @return string           处理后的图片
+     * @param  string $realFile           
+     * @param  string $savePath        
+     * @return string                 
      */
     private function cutImage($realFile, $savePath)
     {
@@ -181,7 +181,7 @@ class Process extends BaseProcess
     }
 
     /**
-     * 设置保存的路径
+     *        
      *
      * @access private
      */
@@ -190,14 +190,14 @@ class Process extends BaseProcess
         $savePath = base64url_decode($this->params['uploadPath']);
         if( ! is_dir($savePath))
         {
-            //如果保存路径不存在，那么建立它
+            //         ，     
             dir_create($savePath);
         }
         return $savePath;
     }
 
     /**
-     * 所要保存的文件名
+     *         
      * 
      * @return string
      */
@@ -208,7 +208,7 @@ class Process extends BaseProcess
     }
 
     /**
-     * 配置文件中的图片所保存的路径
+     *               
      * 
      * @return string
      */
@@ -219,7 +219,7 @@ class Process extends BaseProcess
     }
 
     /**
-     * 取得要加水印的图片
+     *          
      */
     private function getWaterFile()
     {

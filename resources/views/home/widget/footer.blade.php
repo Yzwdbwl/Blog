@@ -19,7 +19,6 @@
 </div>
 <script type="text/javascript">
 $(function(){
-	//判断滚动条距离上面的高度是否为0来判断是否显示返回头部模块
 	$(window).scroll(function(){
 		var top = $(window).scrollTop();
 		if(top > 0){
@@ -28,7 +27,6 @@ $(function(){
 			$("#scrolltop").fadeOut("slow");
 		}
 		});
-		//点击返回头部效果
 		$("#scrolltop").click(function(){
 			$("html,body").animate({ scrollTop:0});
 		});

@@ -3,12 +3,21 @@
 use Validator, Lang;
 use App\Services\Admin\BaseValidate;
 
-
+/**
+ *     
+ *
+ *  
+ */
 class Content extends BaseValidate
 {
-    
+    /**
+     *             
+     *
+     * @access public
+     */
     public function add(\App\Services\Admin\Content\Param\ContentSave $data)
     {
+        //       
         $rules = array(
             'name' => 'required',
             'subtitle' => 'required',
@@ -17,6 +26,7 @@ class Content extends BaseValidate
             'status' => 'required',
         );
 
+        //        
         $messages = array(
             'name.required' => Lang::get('content.name_empty'),
             'subtitle.required' => Lang::get('content.subtitle_empty'),
@@ -25,6 +35,7 @@ class Content extends BaseValidate
             'status.required' => Lang::get('content.status_empty')
         );
 
+        //    
         $validator = Validator::make($data->toArray(), $rules, $messages);
         if($validator->fails())
         {
@@ -34,7 +45,11 @@ class Content extends BaseValidate
         return true;
     }
 
-  
+    /**
+     *             
+     *
+     * @access public
+     */
     public function edit(\App\Services\Admin\Content\Param\ContentSave $data)
     {
         return $this->add($data);

@@ -4,14 +4,14 @@ use App\Services\Admin\SC;
 use App\Http\Controllers\Admin\Controller;
 
 /**
- * 登录相关
+ *     
  *
  * 
  */
 class IndexController extends Controller
 {
     /**
-     * 显示首页
+     *     
      */
     public function index()
     {
@@ -20,7 +20,7 @@ class IndexController extends Controller
     }
 
     /**
-     * 显示首页
+     *     
      */
     public function cs()
     {

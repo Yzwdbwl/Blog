@@ -2,16 +2,24 @@
 
 namespace App\Widget\Home;
 
-
+/**
+ *    
+ *
+ *  
+ */
 class Common
 {
-   
+    /**
+     * footer
+     */
     public function footer()
     {
         return view('home.widget.footer');
     }
 
-    
+    /**
+     * header
+     */
     public function header($headerObject = false)
     {
         return view('home.widget.header', compact('headerObject'));

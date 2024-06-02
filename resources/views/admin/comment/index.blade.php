@@ -15,10 +15,10 @@
                           <tr>
                             <th width="70">Choose</th>
                             <th>Comment content</th>
-                            <th width="80">所属文章</th>
-                            <th width="100">评论人</th>
-                            <th width="150">评论时间</th>
-                            <th width="80">操作</th>
+                            <th width="80">    </th>
+                            <th width="100">   </th>
+                            <th width="150">    </th>
+                            <th width="80">  </th>
                           </tr>
                         </thead>
                         <tbody>
@@ -26,8 +26,8 @@
                             <tr>
                               <td><input autocomplete="off" type="checkbox" name="ids[]" class="ids" value="<?php echo $value['id']; ?>"></td>
                               <td><?php echo $value['content']; ?></td>
-                              <td><a target="_blank" href="<?php echo route('home', ['class' => 'index', 'action' => 'detail', 'id' => $value['object_id']]); ?>"><?php echo '查看'; ?></a></td>
-                              <td><?php echo $value['nickname'] == '__blog.author__' ? '<span style="color:red;">博主</span>' : $value['nickname']; ?></td>
+                              <td><a target="_blank" href="<?php echo route('home', ['class' => 'index', 'action' => 'detail', 'id' => $value['object_id']]); ?>"><?php echo '  '; ?></a></td>
+                              <td><?php echo $value['nickname'] == '__blog.author__' ? '<span style="color:red;">  </span>' : $value['nickname']; ?></td>
                               <td>
                                 <?php echo date('Y-m-d H:i', $value['time']); ?>
                               </td>
@@ -94,7 +94,7 @@
         __d.showModal();
     });
 
-    //load 内容到弹窗中
+    //load       
     function loadComment(commentid, dialogObj) {
       var url = '<?php echo R('common', 'blog.comment.reply'); ?>';
       $.get(url, {commentid: commentid}, function(data){

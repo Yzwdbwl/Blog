@@ -4,50 +4,103 @@ namespace App\Services\Admin;
 use App\Services\Admin\SC;
 
 
-
+/**
+ *              、 、  
+ *
+ * 
+ */
 class MCAManager {
 
-    
+    /**
+     *             
+     *
+     * @var string
+     */
     CONST MAC_BIND_NAME = 'mac';
 
-    
+    /**
+     *        
+     *
+     * @var int
+     */
     CONST MENU_LEVEL_FIRST = 1;
 
-    
+    /**
+     *        
+     *
+     * @var int
+     */
     CONST MENU_LEVEL_SECOND = 2;
 
-    
+    /**
+     *        
+     *
+     * @var int
+     */
     CONST MENU_LEVEL_THIRD = 3;
 
-   
+    /**
+     *        
+     *
+     * @var string
+     */
     private $module;
 
-    
+    /**
+     *       
+     *
+     * @var string
+     */
     private $class;
 
-    
+    /**
+     *        
+     *
+     * @var string
+     */
     private $action;
 
-   
+    /**
+     *                
+     *
+     * @var array
+     */
     private $currentMCA;
 
-    
+    /**
+     *              
+     *
+     * @var array
+     */
     private $userPermission;
 
-   
+    /**
+     * set current module
+     *
+     * @param string $module
+     */
     public function setModule($module)
     {
         $this->module = $module;
         return $this;
     }
 
-    
+    /**
+     * set current action
+     *
+     * @param string $action
+     */
     public function setAction($action)
     {
         $this->action = $action;
         return $this;
     }
 
+    /**
+     * set current class
+     *
+     * @param string $class
+     */
     public function setClass($class)
     {
         $this->class = $class;
@@ -78,25 +131,44 @@ class MCAManager {
         return $this->class;
     }
 
-    
+    /**
+     *             
+     *
+     * @return array     
+     */
     public function getCurrentMCAInfo()
     {
         return $this->currentMCAInfo();
     }
 
-   
+    /**
+     *                
+     *
+     * @return array     
+     */
     public function getCurrentMCAfatherMenuInfo()
     {
         return $this->searchMCAMatchMenuLevelForCurrentMCA(self::MENU_LEVEL_FIRST, $this->currentMCAInfo());
     }
 
-   
+    /**
+     *                
+     *
+     * @return array     
+     */
     public function getCurrentMCASecondFatherMenuInfo()
     {
         return $this->searchMCAMatchMenuLevelForCurrentMCA(self::MENU_LEVEL_SECOND, $this->currentMCAInfo());
     }
 
-    
+    /**
+     *             ，          
+     *
+     * @param  string $module   
+     * @param  string $class   
+     * @param  string $action   
+     * @return true|false
+     */
     public function matchFirstMenu($module, $class, $action)
     {
         $currentMCAInfo = $this->currentMCAInfo();
@@ -114,7 +186,14 @@ class MCAManager {
         return false;
     }
 
-    
+    /**
+     *             ，          
+     *
+     * @param  string $module   
+     * @param  string $class   
+     * @param  string $action   
+     * @return true|false
+     */
     public function matchSecondMenu($module, $class, $action)
     {
         $currentMCAInfo = $this->currentMCAInfo();
@@ -131,7 +210,14 @@ class MCAManager {
         return false;
     }
 
-   
+    /**
+     *             ，          
+     *
+     * @param  string $module   
+     * @param  string $class   
+     * @param  string $action   
+     * @return true|false
+     */
     public function matchThirdMenu($module, $class, $action)
     {
         $currentMCAInfo = $this->currentMCAInfo();
@@ -149,7 +235,12 @@ class MCAManager {
         return false;
     }
 
-  
+    /**
+     *                   
+     *
+     * @param int $level            
+     * @return array
+     */
     private function searchMCAMatchMenuLevelForCurrentMCA($menuLevel, $currentMCAInfo)
     {
         $userPermission = $this->getUserPermission();
@@ -170,6 +261,11 @@ class MCAManager {
         return [];
     }
 
+    /**
+     *             
+     *
+     * @return array
+     */
     private function currentMCAInfo()
     {
         if( ! $this->currentMCA)

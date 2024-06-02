@@ -5,10 +5,16 @@ use App\Services\Home\Search\Sphinx;
 use App\Libraries\Spliter;
 use App\Services\Home\BaseProcess;
 
-
+/**
+ *     
+ *
+ *  
+ */
 class Process extends BaseProcess
 {
-    
+    /**
+     *    sphinx   
+     */
     public function sphinxSearch($keyword)
     {
         $sphinx = (new Sphinx())->initSphinxClient();
@@ -16,7 +22,9 @@ class Process extends BaseProcess
         return $this->prepareSphinxResult($result);
     }
 
-   
+    /**
+     *   sphinx     
+     */
     private function prepareSphinxResult($result)
     {
         if( ! isset($result['matches'])) return false;
@@ -29,7 +37,12 @@ class Process extends BaseProcess
         return $articleIds;
     }
 
-    
+    /**
+     *   keyword unicode 
+     * 
+     * @param  string $keyword
+     * @return string        
+     */
     public function prepareKeyword($keyword)
     {
         $spliter = new Spliter();

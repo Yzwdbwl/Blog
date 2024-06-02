@@ -13,26 +13,52 @@ use App\Services\Admin\SC;
 use App\Libraries\Spliter;
 use App\Services\Admin\BaseProcess;
 
-
+/**
+ *     
+ *
+ *  
+ */
 class Process extends BaseProcess
 {
-    
+    /**
+     *     
+     *
+     * @var object
+     */
     private $contentModel;
 
-    
+    /**
+     *       
+     *
+     * @var object
+     */
     private $contentDetailModel;
 
-    
+    /**
+     *         
+     *
+     * @var object
+     */
     private $contentValidate;
 
-    
+    /**
+     *    
+     *
+     * @access public
+     */
     public function __construct()
     {
         if( ! $this->contentModel) $this->contentModel = new ContentModel();
         if( ! $this->contentValidate) $this->contentValidate = new ContentValidate();
     }
 
-    
+    /**
+     *       
+     *
+     * @param string $data
+     * @access public
+     * @return boolean true|false
+     */
     public function addContent(\App\Services\Admin\Content\Param\ContentSave $data)
     {
         if( ! $this->contentValidate->add($data))
@@ -64,7 +90,13 @@ class Process extends BaseProcess
         return true;
     }
 
-    
+    /**
+     *     ，       ，             
+     *
+     * @param string $data
+     * @access public
+     * @return boolean true|false
+     */
     public function editContent(\App\Services\Admin\Content\Param\ContentSave $data, $id)
     {
         if( ! $this->contentValidate->edit($data))
@@ -76,7 +108,9 @@ class Process extends BaseProcess
 
         $object = new \stdClass();
         $object->contentAutoId = $id;
-
+//
+//        try
+//        {
             $result = \DB::transaction(function() use ($data, $id, $object)
             {
                 $this->updateContent($data, $id);
@@ -84,7 +118,11 @@ class Process extends BaseProcess
 
                 return true;
             });
-
+//        }
+//        catch (\Exception $e)
+//        {
+//            $result = false;
+//        }
 
         if( ! $result)
         {
@@ -92,7 +130,12 @@ class Process extends BaseProcess
         }
         return true;
     }
-    
+    /**
+     *      ，       ，             
+     *
+     * @param  array $data
+     * @return int    ID
+     */
     private function saveContent(\App\Services\Admin\Content\Param\ContentSave $data, $object)
     {
         $dataContet['is_delete'] = ContentModel::IS_DELETE_NO;
@@ -109,7 +152,13 @@ class Process extends BaseProcess
         }
         return $insertObject->id;
     }
-    
+    /**
+     * Delete  ，       ，             
+     *
+     * @param array $ids  Delete    id
+     * @access public
+     * @return boolean true|false
+     */
     public function detele($ids)
     {
         if( ! is_array($ids)) return false;
@@ -144,10 +193,10 @@ class Process extends BaseProcess
 
 
     /**
-     * 保存到主表，因为使用了事务，如果没有成功请手动抛出异常
+     *      ，       ，             
      *
      * @param  array $data
-     * @return int 自增的ID
+     * @return int    ID
      */
     private function updateContent(\App\Services\Admin\Content\Param\ContentSave $data, $id)
     {

@@ -24,7 +24,6 @@
         }
     </style>
     <script src="<?php echo loadStatic('/home/lib.js'); ?>" type="text/javascript"></script>
-    <!-- 弹出窗口 -->
     <link rel="stylesheet" href="<?php echo loadStatic('/lib/artdialog/css/ui-dialog.css'); ?>">
     <script src="<?php echo loadStatic('/lib/artdialog/dist/dialog-plus-min.js'); ?>"></script>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->

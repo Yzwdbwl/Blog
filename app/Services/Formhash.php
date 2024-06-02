@@ -4,10 +4,19 @@ namespace App\Services;
 
 use Request, Session;
 
-
+/**
+ *           
+ *
+ *
+ */
 class Formhash
 {
-    
+    /**
+     *          
+     * 
+     * @param void $data        ，                 。
+     * @return string
+     */
     public function hash($data)
     {
         $fullUrl = Request::fullUrl();
@@ -16,6 +25,9 @@ class Formhash
         return $hashKey;
     }
 
+    /**
+     *     
+     */
     public function checkFormHash()
     {
         $formHash = Request::input('_form_hash');

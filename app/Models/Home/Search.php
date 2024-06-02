@@ -10,19 +10,48 @@ use Illuminate\Pagination\LengthAwarePaginator;
  */
 class Search extends Model
 {
-   
+    /**
+     *    Delete   
+     */
     CONST IS_DELETE_NO = 1;
 
+    /**
+     *        
+     */
     CONST STATUS_YES = 1;
 
+    /**
+     *       
+     *
+     * @var string
+     */
     protected $table = 'artice';
 
+    /**
+     *    
+     *
+     * @var string
+     */
     private $prefix;
 
+    /**
+     * dict model object
+     *
+     * @var object
+     */
     private $dictModelObject;
 
+    /**
+     *     ，      
+     *
+     * @var [type]
+     */
     private $dictDataCache;
 
+    /**
+     *
+     * @return array
+     */
     public function activeArticleInfoBySearch($object)
     {
 

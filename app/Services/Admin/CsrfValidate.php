@@ -6,7 +6,9 @@ use Illuminate\Support\Str;
 
 class CsrfValidate {
 
-    
+    /**
+     *        get       csrf，          
+     */
     public function tokensMatch()
     {
         $token = Session::token();

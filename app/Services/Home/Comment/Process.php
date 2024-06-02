@@ -5,10 +5,16 @@ use App\Models\Home\Comment as CommentModel;
 use App\Libraries\Js;
 use App\Services\Home\BaseProcess;
 
-
+/**
+ *       
+ *
+ *  
+ */
 class Process extends BaseProcess
 {
-   
+    /**
+     *        Id，          
+     */
     public function prepareReplyIds($commentList)
     {
         if( ! is_array($commentList)) return [];
@@ -22,7 +28,9 @@ class Process extends BaseProcess
         return array_values(array_unique($replyIds));
     }
 
- 
+    /**
+     *            
+     */
     public function joinReplyComments($commentList, $replyComments)
     {
         if( ! is_array($commentList)) return [];
@@ -33,7 +41,9 @@ class Process extends BaseProcess
         return $commentList;
     }
 
-  
+    /**
+     *         key       
+     */
     private function findReplyContents($replyIdsString, $replyComments)
     {
         if( ! is_array($replyComments) or empty($replyIdsString)) return [];
@@ -55,7 +65,9 @@ class Process extends BaseProcess
         return $result;
     }
 
-   
+    /**
+     *     
+     */
     public function addComment($data)
     {
         $validate = new \App\Services\Home\Comment\Validate\Comment();

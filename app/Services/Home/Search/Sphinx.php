@@ -3,7 +3,7 @@
 use Lang;
 
 /**
- * sphinx
+ * sphinx  
  *
  *  
  */
@@ -30,6 +30,9 @@ class Sphinx
      */
     private $sphinxPort = 9312;
 
+    /**
+     *    sphinx   
+     */
     public function initSphinxClient()
     {
         $this->sphinx = new \SphinxClient();

@@ -35,7 +35,7 @@
 
                   $.fn.zTree.init($("#zTree-container"), __setting, __zTree_Node);
 
-                  //获取所有选中节点的值
+                  //          
                   function getCheckedAll() {
                       var treeObj = $.fn.zTree.getZTreeObj("zTree-container");
                       var nodes = treeObj.getCheckedNodes(true);

@@ -2,10 +2,21 @@
 
 namespace App\Libraries;
 
-
+/**
+ *   
+ *
+ * 
+ */
 class Crypt
 {
-   
+    /**
+     *     ，    
+     *
+     * @param string $string        
+     * @param string $operation       
+     * @param string $key      key
+     * @param string $expiry     
+     */
     static public function cryptcode($string, $operation = 'DECODE', $key = '', $expiry = 0)
     {
         $ckey_length = 4;

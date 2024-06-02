@@ -6,7 +6,11 @@ use App\Services\Admin\SC;
 use Illuminate\Support\Facades\Auth;
 use Request, Config;
 use \App\Services\Admin\MCAManager;
-
+/**
+ *      
+ *
+ *  
+ */
 class Common
 {
     /**
@@ -61,7 +65,7 @@ class Common
     }
 
     /**
-     * map
+     *     
      */
     public function menumap()
     {
